@@ -1,0 +1,7 @@
+name: LyriaHandelskontor
+version: '${project.version}'
+main: org.silvius.lyriahandelskontor.LyriaHandelskontor
+api-version: 1.19
+commands:
+  handelskontor:
+    description: Nothing yet
