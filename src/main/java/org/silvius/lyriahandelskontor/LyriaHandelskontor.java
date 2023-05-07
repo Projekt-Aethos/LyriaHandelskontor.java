@@ -9,6 +9,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.maxgamer.quickshop.api.QuickShopAPI;
+import xyz.janboerman.guilib.GuiLibrary;
+import xyz.janboerman.guilib.api.GuiListener;
 
 import java.util.logging.Logger;
 
@@ -20,12 +22,19 @@ public final class LyriaHandelskontor extends JavaPlugin {
     public static Economy econ = null;
     private static Permission perms = null;
     private static Chat chat = null;
+    private static GuiListener guiListener;
+
+    public static GuiListener getGuiListener() {
+        return guiListener;
+    }
     @Override
     public void onEnable() {
         plugin = this;
         getCommand("handelskontor").setExecutor(new HandelskontorCommand());
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new HandelskontorCommand(), this);
+        pluginManager.registerEvents(new ShopInteraction(), this);
+
         Plugin pluginQuickshop = Bukkit.getPluginManager().getPlugin("QuickShop");
         api = (QuickShopAPI)pluginQuickshop;
         if (!setupEconomy()) {
@@ -34,6 +43,11 @@ public final class LyriaHandelskontor extends JavaPlugin {
             return;
         }
         setupPermissions();
+        GuiLibrary guiLibrary = (GuiLibrary) getServer().getPluginManager().getPlugin("GuiLib");
+        guiListener = guiLibrary.getGuiListener();
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
     }
 
     @Override

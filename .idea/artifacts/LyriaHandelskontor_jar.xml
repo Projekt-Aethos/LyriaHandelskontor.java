@@ -3,6 +3,7 @@
     <output-path>$USER_HOME$/Desktop/server/plugins</output-path>
     <root id="archive" name="LyriaHandelskontor.jar">
       <element id="module-output" name="LyriaHandelskontor" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/wesjd/anvilgui/1.6.4-SNAPSHOT/anvilgui-1.6.4-20230501.210626-1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
