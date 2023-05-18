@@ -68,24 +68,24 @@ public class ShopInteraction implements Listener {
         }
         TileState shopSign = (TileState) Objects.requireNonNull(player.getTargetBlock(5)).getState();
         boolean registerdHandelskontor = isRegisterdHandelskontor(shopSign);
-        MenuHolder<LyriaHandelskontor> menu1 = new ShopControlPanelMenu<>(LyriaHandelskontor.getPlugin(), 5 * 9, "Kramladen Editor", shop, shopSign);
-        menu1.setButton(44, new CloseButton<>());
+        MenuHolder<LyriaHandelskontor> menu1 = new ShopControlPanelMenu<>(LyriaHandelskontor.getPlugin(), 4 * 9, "Kramladen Editor", shop, shopSign);
+        menu1.setButton(4*9-1, new CloseButton<>());
         String price = formatDouble(shop.getPrice());
 
         if (player.hasPermission("quickshop.other.price") || owner) {
             Material[] materials = new Material[]{Material.COAL, Material.IRON_INGOT, Material.GOLD_INGOT, Material.DIAMOND, Material.EMERALD};
             Integer[] itemSlots = new Integer[]{40, 39, 38, 37, 36};
             double[] changeAmounts = new double[]{0.01, 0.1, 1, 10, 100};
-            for (int i = 0; i < materials.length; i++) {
-                Material material = materials[i];
-                double changeAmount = changeAmounts[i];
-                menu1.setButton(itemSlots[i], new PriceChangeButton<>(material, changeAmount, 1, price));
-            }
+//            for (int i = 0; i < materials.length; i++) {
+//                Material material = materials[i];
+//                double changeAmount = changeAmounts[i];
+//                menu1.setButton(itemSlots[i], new PriceChangeButton<>(material, changeAmount, 1, price));
+//            }
 
             for (int i = 0; i < materials.length; i++) {
                 Material material = materials[i];
                 double changeAmount = changeAmounts[i];
-                menu1.setButton(itemSlots[i] - 9, new PriceChangeButton<>(material, changeAmount, 0, price));
+                menu1.setButton(itemSlots[i] - 9, new PriceChangeButton<>(material, changeAmount,  price));
             }
         }
         List<Component> message_lore = new ArrayList<>();

@@ -60,6 +60,10 @@ public class HandelskontorCommand implements CommandExecutor, Listener {
     private static void changeItemNameAndLoreBuyMenu(ItemStack item, String name, Integer lore, NamespacedKey namespacedKey, int amount, String price) {
         ItemMeta itemMeta = item.getItemMeta();
         List<Component> itemLore = new ArrayList<>();
+        if(name.contains("+")){
+        itemLore.add(Component.text(ChatColor.BLACK+"(CIT) plus"+(name.length()-2)));}
+        else{
+            itemLore.add(Component.text(ChatColor.BLACK+"(CIT) minus"+(name.length()-2)));}
         itemLore.add(Component.text(ChatColor.GRAY + "Anzahl: " + ChatColor.BLUE + lore).decoration(TextDecoration.ITALIC, false));
         itemLore.add(Component.text(ChatColor.GRAY + "Kosten total: " + ChatColor.GOLD + price).decoration(TextDecoration.ITALIC, false));
         itemMeta.lore(itemLore);
