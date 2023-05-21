@@ -38,7 +38,7 @@ public class PriceChangeButton<P extends Plugin> extends ItemButton<MenuHolder<P
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.displayName(Component.text("+/-" + changeAmount).decoration(TextDecoration.ITALIC, false).color(NamedTextColor.BLUE));
         List<Component> lore = new ArrayList<>();
-        lore.add(Component.text(ChatColor.BLACK + "(CIT) muenze" + ((int) (Math.floor(Math.log10(changeAmount)) + 3))));
+        lore.add(Component.text("(CIT) muenze" + ((int) (Math.floor(Math.log10(changeAmount)) + 3))).color(NamedTextColor.BLACK));
         lore.add(Component.text(ChatColor.GRAY + "Stückpreis: " + ChatColor.GOLD + price));
         lore.add(Component.text(ChatColor.GRAY + "Linksklick/Rechtsklick: " + ChatColor.WHITE + "Erhöht/senkt den " + ChatColor.getByChar("b") + "Preis " + ChatColor.WHITE + "um den gegebenen Wert"));
         lore.add(Component.text(ChatColor.GRAY + "Shift-Klick: " + ChatColor.WHITE + "Ändert den " + ChatColor.getByChar("b") + "Preis " + ChatColor.WHITE + "um 5x den gegebenen Wert"));

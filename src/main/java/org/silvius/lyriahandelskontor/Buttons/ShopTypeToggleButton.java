@@ -1,6 +1,7 @@
 package org.silvius.lyriahandelskontor.Buttons;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -38,6 +39,7 @@ public class ShopTypeToggleButton<P extends Plugin> extends ItemButton<MenuHolde
             itemMeta.displayName(Component.text("Shoptyp: "+ChatColor.RED+"Verkauf").decoration(TextDecoration.ITALIC, false));
         }
         List<Component> lore = new ArrayList<>();
+        lore.add(Component.text("(CIT) chest").color(NamedTextColor.BLACK));
         lore.add(Component.text(ChatColor.GRAY+"Linksklick: "+ChatColor.WHITE+"Ändert den "+ChatColor.getByChar("b")+"Shoptyp"));
         itemMeta.lore(lore);
         itemStack.setItemMeta(itemMeta);

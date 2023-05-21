@@ -61,9 +61,9 @@ public class HandelskontorCommand implements CommandExecutor, Listener {
         ItemMeta itemMeta = item.getItemMeta();
         List<Component> itemLore = new ArrayList<>();
         if(name.contains("+")){
-        itemLore.add(Component.text(ChatColor.BLACK+"(CIT) plus"+(name.length()-2)));}
+        itemLore.add(Component.text("(CIT) plus"+((int) Math.pow(2, (name.length()-2)))).color(NamedTextColor.BLACK));}
         else{
-            itemLore.add(Component.text(ChatColor.BLACK+"(CIT) minus"+(name.length()-2)));}
+            itemLore.add(Component.text("(CIT) minus"+((int) Math.pow(2, (name.length()-2)))).color(NamedTextColor.BLACK));}
         itemLore.add(Component.text(ChatColor.GRAY + "Anzahl: " + ChatColor.BLUE + lore).decoration(TextDecoration.ITALIC, false));
         itemLore.add(Component.text(ChatColor.GRAY + "Kosten total: " + ChatColor.GOLD + price).decoration(TextDecoration.ITALIC, false));
         itemMeta.lore(itemLore);
@@ -170,7 +170,7 @@ public class HandelskontorCommand implements CommandExecutor, Listener {
         ItemMeta returnItemMeta = returnItem.getItemMeta();
         returnItemMeta.displayName(Component.text("Inventar schließen"));
         List<Component> returnItemLore = new ArrayList<>();
-        returnItemLore.add(Component.text(ChatColor.BLACK+"(CIT) ablehnen"));
+        returnItemLore.add(Component.text("(CIT) ablehnen").color(NamedTextColor.BLACK));
         returnItemMeta.lore(returnItemLore);
         returnItem.setItemMeta(returnItemMeta);
 
